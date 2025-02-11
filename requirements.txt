@@ -1,0 +1,7 @@
+pillow
+transformers
+torch
+osxphotos
+ultralytics
+cv2
+matplotlib

@@ -12,4 +12,8 @@ Idee:
 3) Tag in DB einfügen:
 	ZKEYWord
 	Z_1Keywords
-	
+
+ Weitere Optionen zum Testen:
+ https://github.com/facebookresearch/detectron2
+ https://github.com/openai/CLIP
+ 

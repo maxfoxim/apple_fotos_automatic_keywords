@@ -1,4 +1,5 @@
 # https://lopezyse.medium.com/computer-vision-object-detection-with-python-14b241f97fd8
+#  .venv/bin/python Main.py
 
 import cv2
 import numpy as np
@@ -34,8 +35,10 @@ def detect_objects(image_path,confidence_value):
         
     return tags
 
-db = os.path.expanduser("/Users/stephan/Pictures/Kundenfotos.photoslibrary")
+db = os.path.expanduser("/Users/stephan/Pictures/Fotomediathek_ab_2025.photoslibrary")
 photosdb = osxphotos.PhotosDB(db)
+
+# Ausgabe infos
 print(photosdb.keywords)
 print(photosdb.persons)
 print(photosdb.albums)
@@ -44,11 +47,10 @@ print(photosdb.keywords_as_dict)
 print(photosdb.persons_as_dict)
 print(photosdb.albums_as_dict)
 
-# find all photos with Keyword = Foo and containing John Smith
+# filter photo
 photos = photosdb.photos()
 
-# find all photos that include Alice Smith but do not contain the keyword Bar
-for p in photos[:30]:
+for p in photos[:]:
     print("------------------------------")
     print(
         p.uuid,
@@ -61,7 +63,8 @@ for p in photos[:30]:
             keywords = detect_objects(p.path,0.1)
             print(keywords)
             p = photoscript.Photo(p.uuid)
-            p.keywords = keywords
+            
+            p.keywords = p.keywords + keywords 
         except Exception as e:
             print("Problem: ",e)
             
